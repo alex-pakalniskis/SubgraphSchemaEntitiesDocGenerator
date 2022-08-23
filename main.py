@@ -1,6 +1,7 @@
 import requests
 from typing import List
 import re
+import sys
 
 class DocumentationGenerator:
   """Utility to generate Markdown documentation for Subgraph Entities
@@ -82,8 +83,8 @@ def get_fields(entity, schema):
     return markdown_table
 
 if __name__ == "__main__":
-    protocol_name = "LoopringzkRollup"
-    protocol_schema = "https://ipfs.io/ipfs/QmTKv1o2bBdLoWxNY34sAgtx6rArPRijaMK8srxZXnN74s"
+    protocol_name = sys.argv[1]
+    protocol_schema = f"https://ipfs.io/ipfs/{sys.argv[2]}"
 
     prog = DocumentationGenerator(protocol_schema)
     prog.get_schema_data()
